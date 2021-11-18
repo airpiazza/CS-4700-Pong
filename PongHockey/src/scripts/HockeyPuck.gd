@@ -25,7 +25,7 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.normal)
 
 	if player_scored():
-#		increase_player_score()
+		increase_player_score()
 		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
@@ -34,7 +34,7 @@ func _physics_process(delta):
 		spawn_ball()
 			
 	if ai_scored():
-#		increase_ai_score()
+		increase_ai_score()
 		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
