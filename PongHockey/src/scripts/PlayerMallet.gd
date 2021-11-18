@@ -14,7 +14,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var mouse_position = get_global_mouse_position()
-	self.position.x = mouse_position.x - 875
-	self.position.y = mouse_position.y - 300
+	var collision = move_and_collide(Vector2.ZERO)
+	if mouse_position.x > 512+37.5 and mouse_position.x < 1024-37.5 and mouse_position.y > 37.5 and mouse_position.y < 600-37.5:
+		self.position.x = mouse_position.x - 875
+		self.position.y = mouse_position.y - 300
+	
 	print(mouse_position)
 	print(self.position)
