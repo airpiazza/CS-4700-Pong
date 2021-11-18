@@ -23,9 +23,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameTitle" parent="." instance=ExtResource( 4 )]
+[node name="PongTitle" parent="." instance=ExtResource( 4 )]
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="PongButtons" type="VBoxContainer" parent="."]
 margin_left = 232.0
 margin_top = 168.0
 margin_right = 361.0
@@ -34,7 +34,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" parent="Buttons" instance=ExtResource( 2 )]
+[node name="PlayButton" parent="PongButtons" instance=ExtResource( 2 )]
 target_scene = "res://pong/src/scenes/Arena.tscn"
 
-[node name="QuitButton" parent="Buttons" instance=ExtResource( 3 )]
+[node name="QuitButton" parent="PongButtons" instance=ExtResource( 3 )]
+
+[node name="PongHockey" parent="." instance=ExtResource( 4 )]
+margin_left = 669.0
+margin_top = 131.0
+margin_right = 749.0
+margin_bottom = 145.0
+text = "pong hockey"
+
+[node name="PongHockeyButtons" type="VBoxContainer" parent="."]
+margin_left = 641.0
+margin_top = 170.0
+margin_right = 770.0
+margin_bottom = 234.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="PongHockeyButtons" instance=ExtResource( 2 )]
+text = "Play Pong Hockey"
+target_scene = "res://PongHockey/src/scenes/HockeyArena.tscn"
+
+[node name="QuitButton" parent="PongHockeyButtons" instance=ExtResource( 3 )]

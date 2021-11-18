@@ -21,9 +21,9 @@ func _physics_process(delta):
 	
 	if ball.velocity != Vector2.ZERO:
 		if ball.position.y < self.position.y:
-			velocity += Vector2.UP * (speed/5)
+			velocity += Vector2.UP * (speed/3)
 		if ball.position.y > self.position.y:
-			velocity += Vector2.DOWN * (speed/5)
+			velocity += Vector2.DOWN * (speed/3)
 			
 		
 	move_and_collide(velocity*delta)
