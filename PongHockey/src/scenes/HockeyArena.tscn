@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://pong/assets/wall.png" type="Texture" id=1]
 [ext_resource path="res://PongHockey/src/scenes/Rink.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://PongHockey/src/scenes/HockeyPuck.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PongHockey/src/scenes/AIMallet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://PongHockey/src/scenes/Scoreboard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PongHockey/src/scripts/HockeyArena.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -61,6 +62,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 0/z_index = 0
 
 [node name="HockeyArena" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -75,14 +77,15 @@ margin_top = 300.0
 margin_right = 512.0
 margin_bottom = 300.0
 
-[node name="PlayerMallet" parent="." instance=ExtResource( 3 )]
-
-[node name="Puck" parent="." instance=ExtResource( 4 )]
-
-[node name="AIMallet" parent="." instance=ExtResource( 5 )]
-
 [node name="HockeyScoreboard" parent="." instance=ExtResource( 6 )]
 margin_left = 15.0
 margin_top = -44.0
 margin_right = 15.0
 margin_bottom = -44.0
+
+[node name="PlayerMallet" parent="." instance=ExtResource( 3 )]
+
+[node name="Puck" parent="." instance=ExtResource( 4 )]
+speed = 1000.0
+
+[node name="AIMallet" parent="." instance=ExtResource( 5 )]
