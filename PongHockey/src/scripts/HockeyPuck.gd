@@ -16,9 +16,7 @@ export var max_speed = 2000.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	random_number_generator.randomize()
-	toggle_ball_visibility()
 	yield(get_tree().create_timer(1.5), "timeout")
-	toggle_ball_visibility()
 	spawn_ball()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,21 +32,17 @@ func _physics_process(delta):
 	
 	if player_scored():
 		increase_player_score()
-		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
 		yield(get_tree().create_timer(2.0), "timeout")
-		toggle_ball_visibility()
 		spawn_ball()
 		clear_particles()
 			
 	if ai_scored():
 		increase_ai_score()
-		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
 		yield(get_tree().create_timer(2.0), "timeout")
-		toggle_ball_visibility()
 		spawn_ball()
 		clear_particles()
 	
@@ -81,9 +75,6 @@ func player_scored():
 
 func stop_ball():
 	velocity = Vector2.ZERO
-
-func toggle_ball_visibility():
-	self.get_child(0).visible = not self.get_child(0).visible
 
 #
 func degrade_velocity():
