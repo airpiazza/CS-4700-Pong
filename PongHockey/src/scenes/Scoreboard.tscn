@@ -12,9 +12,9 @@ __meta__ = {
 
 [node name="HockeyPlayerScore" type="Label" parent="."]
 margin_left = 697.0
-margin_top = 104.0
+margin_top = 90.0
 margin_right = 705.0
-margin_bottom = 118.0
+margin_bottom = 104.0
 rect_scale = Vector2( 5, 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
