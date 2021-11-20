@@ -17,7 +17,7 @@ export var max_speed = 2000.0
 func _ready():
 	random_number_generator.randomize()
 	yield(get_tree().create_timer(1.5), "timeout")
-	spawn_ball()
+	spawn_puck()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -32,18 +32,18 @@ func _physics_process(delta):
 	
 	if player_scored():
 		increase_player_score()
-		reposition_ball()
-		stop_ball()
+		reposition_puck()
+		stop_puck()
 		yield(get_tree().create_timer(2.0), "timeout")
-		spawn_ball()
+		spawn_puck()
 		clear_particles()
 			
 	if ai_scored():
 		increase_ai_score()
-		reposition_ball()
-		stop_ball()
+		reposition_puck()
+		stop_puck()
 		yield(get_tree().create_timer(2.0), "timeout")
-		spawn_ball()
+		spawn_puck()
 		clear_particles()
 	
 	last_collision_time += delta
@@ -51,12 +51,12 @@ func _physics_process(delta):
 	velocity.x = min(velocity.x,max_speed) #maximum puck velocity
 	velocity.y = min(velocity.y,max_speed) #maximum puck velocity
 
-func spawn_ball():
+func spawn_puck():
 	var x_random_direction = signs[random_number_generator.randi() % signs.size()]
 	var y_random_direction = signs[random_number_generator.randi() % signs.size()]
 	velocity = Vector2(x_random_direction, y_random_direction)*speed
 
-func reposition_ball():
+func reposition_puck():
 	self.position.x = 512
 	self.position.y = 300
 #	self.position.y = random_number_generator.randi_range(0, 600)
@@ -73,7 +73,7 @@ func ai_scored():
 func player_scored():
 	return self.position.x <= 0
 
-func stop_ball():
+func stop_puck():
 	velocity = Vector2.ZERO
 
 #
