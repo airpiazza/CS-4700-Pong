@@ -20,11 +20,10 @@ func _physics_process(delta):
 	var ball = get_parent().get_node("Puck")
 	
 	if ball.velocity != Vector2.ZERO:
-		if ball.position.y < self.position.y:
+		if ball.position.y < self.position.y and ball.position.x < 512:
 			velocity += Vector2.UP * (speed/3)
-		if ball.position.y > self.position.y:
+		if ball.position.y > self.position.y and ball.position.x < 512:
 			velocity += Vector2.DOWN * (speed/3)
-			
 		
 	move_and_collide(velocity*delta)
 

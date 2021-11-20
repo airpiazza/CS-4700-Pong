@@ -4,10 +4,14 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var speed = 500.0
+export var speed = 800.0
 var velocity = Vector2()
 var random_number_generator = RandomNumberGenerator.new()
 var signs = [-1, 1]
+var last_collision_time = 0
+export var wait_factor = 6
+export var carryover = 0.75
+export var max_speed = 2000.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,9 +25,13 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity*delta)
 	
-	if collision:
+	if collision and (last_collision_time >= wait_factor*delta) and velocity != Vector2.ZERO:
+		velocity += carryover*collision.collider_velocity #add mallet speed to puck\
 		velocity = velocity.bounce(collision.normal)
-
+		particles_track()
+		emitt_particles()
+		last_collision_time = 0
+	
 	if player_scored():
 		increase_player_score()
 		toggle_ball_visibility()
@@ -32,6 +40,7 @@ func _physics_process(delta):
 		yield(get_tree().create_timer(2.0), "timeout")
 		toggle_ball_visibility()
 		spawn_ball()
+		clear_particles()
 			
 	if ai_scored():
 		increase_ai_score()
@@ -41,6 +50,12 @@ func _physics_process(delta):
 		yield(get_tree().create_timer(2.0), "timeout")
 		toggle_ball_visibility()
 		spawn_ball()
+		clear_particles()
+	
+	last_collision_time += delta
+	degrade_velocity() #puck velocity degredation
+	velocity.x = min(velocity.x,max_speed) #maximum puck velocity
+	velocity.y = min(velocity.y,max_speed) #maximum puck velocity
 
 func spawn_ball():
 	var x_random_direction = signs[random_number_generator.randi() % signs.size()]
@@ -69,3 +84,21 @@ func stop_ball():
 
 func toggle_ball_visibility():
 	self.get_child(0).visible = not self.get_child(0).visible
+
+#
+func degrade_velocity():
+	velocity = velocity.linear_interpolate(Vector2.ZERO,.005)
+
+#emitts the particles and restarts so it can play multiple times
+func emitt_particles():
+	$Particles.set_emitting(true)
+	$Particles.restart()
+
+#tracks the direction of the punk to emitt particles behind it
+func particles_track():
+	$Particles.set_rotation(velocity.angle() + PI)
+	$Particles.initial_velocity = velocity.length()
+
+#clears all the puck particles on screen
+func clear_particles():
+	$Particles.set_amount(0)
