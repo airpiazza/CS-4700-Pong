@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://pong/assets/pong_court.png" type="Texture" id=1]
+[ext_resource path="res://MenuScreen/src/scenes/NextSceneButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MenuScreen/src/scenes/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MenuScreen/src/scenes/GameTitle.tscn" type="PackedScene" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CourtBackground" type="TextureRect" parent="."]
+margin_left = 112.0
+margin_right = 912.0
+margin_bottom = 600.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PongTitle" parent="." instance=ExtResource( 4 )]
+
+[node name="PongButtons" type="VBoxContainer" parent="."]
+margin_left = 232.0
+margin_top = 168.0
+margin_right = 361.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="PongButtons" instance=ExtResource( 2 )]
+target_scene = "res://pong/src/scenes/Arena.tscn"
+
+[node name="QuitButton" parent="PongButtons" instance=ExtResource( 3 )]
+
+[node name="PongHockey" parent="." instance=ExtResource( 4 )]
+margin_left = 669.0
+margin_top = 131.0
+margin_right = 749.0
+margin_bottom = 145.0
+text = "pong hockey"
+
+[node name="PongHockeyButtons" type="VBoxContainer" parent="."]
+margin_left = 641.0
+margin_top = 170.0
+margin_right = 770.0
+margin_bottom = 234.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="PongHockeyButtons" instance=ExtResource( 2 )]
+text = "Play Pong Hockey"
+target_scene = "res://PongHockey/src/scenes/HockeyArena.tscn"
+
+[node name="QuitButton" parent="PongHockeyButtons" instance=ExtResource( 3 )]
