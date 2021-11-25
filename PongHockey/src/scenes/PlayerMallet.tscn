@@ -4,7 +4,7 @@
 [ext_resource path="res://PongHockey/src/scripts/PlayerMallet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 37.054
+radius = 36.6742
 
 [node name="PlayerMallet" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -14,5 +14,5 @@ position = Vector2( 873, 303 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 873, 303 )
+position = Vector2( 872, 302 )
 shape = SubResource( 1 )

@@ -22,9 +22,12 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity*delta)
 	
 	if collision:
+		$pong_hit_sound.play()
 		velocity = velocity.bounce(collision.normal)
+		move_and_collide(velocity*delta)
 
 	if player_scored():
+		$pong_score.play()
 		increase_player_score()
 		toggle_ball_visibility()
 		reposition_ball()
@@ -34,6 +37,7 @@ func _physics_process(delta):
 		spawn_ball()
 			
 	if ai_scored():
+		$pong_score.play()
 		increase_ai_score()
 		toggle_ball_visibility()
 		reposition_ball()
