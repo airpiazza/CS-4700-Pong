@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://pong/assets/pong_court.png" type="Texture" id=1]
 [ext_resource path="res://MenuScreen/src/scenes/GameTitle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MenuScreen/src/scenes/NextSceneButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MenuScreen/src/scenes/QuitButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FinalScoreScreen/game_over.wav" type="AudioStream" id=5]
 [ext_resource path="res://FinalScoreScreen/FinalScoreScreen.gd" type="Script" id=7]
 
 [node name="FinalScoreScreen" type="Control"]
@@ -55,3 +56,6 @@ text = "Play Again"
 target_scene = "res://MenuScreen/src/scenes/Menu.tscn"
 
 [node name="QuitButton" parent="Buttons" instance=ExtResource( 4 )]
+
+[node name="game_over_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

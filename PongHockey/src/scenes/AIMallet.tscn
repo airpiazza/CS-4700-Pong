@@ -4,7 +4,7 @@
 [ext_resource path="res://PongHockey/src/scripts/AIMallet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 38.0132
+radius = 37.5033
 
 [node name="AIMallet" type="KinematicBody2D"]
 position = Vector2( 121, 285 )
@@ -14,4 +14,5 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="AICollisionBody" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -1.5 )
 shape = SubResource( 1 )
