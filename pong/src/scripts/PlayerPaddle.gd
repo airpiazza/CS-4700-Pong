@@ -20,5 +20,9 @@ func _physics_process(delta):
 		velocity += Vector2.UP * speed
 	if Input.is_action_pressed("ui_down"):
 		velocity += Vector2.DOWN * speed
+	if Input.is_key_pressed(KEY_W):
+		velocity += Vector2.UP * speed
+	if Input.is_key_pressed(KEY_S):
+		velocity += Vector2.DOWN * speed
 		
 	move_and_collide(velocity*delta)
