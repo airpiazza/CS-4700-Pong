@@ -4,7 +4,8 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var speed = 1000.0
+export var speed = 500.0
+export var time_before_respawn = 3.0
 var velocity = Vector2()
 var random_number_generator = RandomNumberGenerator.new()
 var signs = [-1, 1]
@@ -33,7 +34,7 @@ func _physics_process(delta):
 		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
-		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(time_before_respawn), "timeout")
 		toggle_ball_visibility()
 		set_spawn_direction_to_player()
 		spawn_ball()
@@ -44,7 +45,7 @@ func _physics_process(delta):
 		toggle_ball_visibility()
 		reposition_ball()
 		stop_ball()
-		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(time_before_respawn), "timeout")
 		toggle_ball_visibility()
 		set_spawn_direction_to_ai()
 		spawn_ball()
@@ -56,8 +57,8 @@ func spawn_ball():
 
 func reposition_ball():
 	self.position.x = 512
-	self.position.y = 300
-#	self.position.y = random_number_generator.randi_range(0, 600)
+#	self.position.y = 300
+	self.position.y = random_number_generator.randi_range(0, 600)
 
 func increase_player_score():
 	Score.player_score += 1
