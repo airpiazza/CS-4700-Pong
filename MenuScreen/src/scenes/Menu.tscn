@@ -4,7 +4,7 @@
 [ext_resource path="res://MenuScreen/src/scenes/NextSceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MenuScreen/assets/menu_background.png" type="Texture" id=3]
 [ext_resource path="res://MenuScreen/src/scenes/GameTitle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://PongHockey/assets/inter_theme.tres" type="Theme" id=5]
+[ext_resource path="res://pong/assets/retro_theme.tres" type="Theme" id=5]
 [ext_resource path="res://MenuScreen/src/scenes/PongTitle.tscn" type="PackedScene" id=6]
 
 [node name="Menu" type="Control"]
@@ -26,10 +26,10 @@ __meta__ = {
 }
 
 [node name="Pong" parent="." instance=ExtResource( 6 )]
-margin_left = 218.0
-margin_top = 164.0
-margin_right = 402.0
-margin_bottom = 252.0
+margin_left = 203.0
+margin_top = 185.0
+margin_right = 427.0
+margin_bottom = 273.0
 theme = ExtResource( 5 )
 
 [node name="PongButtons" type="VBoxContainer" parent="."]
