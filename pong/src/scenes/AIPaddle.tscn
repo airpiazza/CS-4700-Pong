@@ -4,10 +4,11 @@
 [ext_resource path="res://pong/assets/pong_paddle.jpg" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 35.75 )
+extents = Vector2( 0, 35.75 )
 
 [node name="AIPaddle" type="KinematicBody2D"]
 script = ExtResource( 1 )
+speed = 1500.0
 
 [node name="PongPaddle" type="Sprite" parent="."]
 position = Vector2( -7.10543e-15, -0.250001 )
@@ -15,5 +16,5 @@ scale = Vector2( 0.4375, 0.558594 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.25 )
+position = Vector2( 7, -0.25 )
 shape = SubResource( 1 )

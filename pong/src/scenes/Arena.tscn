@@ -56,4 +56,3 @@ position = Vector2( 162, 326 )
 position = Vector2( 516, 326 )
 
 [node name="Scoreboard" parent="." instance=ExtResource( 1 )]
-position = Vector2( 9, -24 )
