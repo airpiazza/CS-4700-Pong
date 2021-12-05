@@ -13,6 +13,7 @@ var last_collision_time = 0
 export var wait_factor = 6
 export var max_speed = 2000.0
 export var min_speed = 300.0
+var last_collider = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,13 +26,19 @@ func _physics_process(delta):
 	var ai_mallet = get_parent().get_node("AIMallet")
 	var collision = move_and_collide(velocity*delta)
 	
-	if collision:
-		velocity += carryover*collision.collider_velocity #add mallet speed to puck\
+	if last_collision_time >= wait_factor*delta and last_collider != null:
+		last_collider.disabled = false
+	
+	if collision and (last_collision_time >= wait_factor*delta) and velocity != Vector2.ZERO:
 		velocity = velocity.bounce(collision.normal)
+		velocity += carryover*collision.collider_velocity #add mallet speed to puck\
 		particles_track()
 		emitt_particles()
 		$hit_sound.play()
-		move_and_slide(velocity*delta)
+		last_collider = collision.get_collider().get_child(1)
+		if collision.get_collider().name != "TileMap":
+			collision.get_collider().get_child(1).disabled = true
+		last_collision_time = 0
 		
 	if player_scored():
 		ai_mallet.position.x = 167
@@ -64,7 +71,7 @@ func _physics_process(delta):
 			velocity.x = -min_speed
 		else:
 			velocity.x = min_speed
-	print(velocity.x)
+#	print(velocity.x)
 	
 
 func spawn_puck():

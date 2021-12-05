@@ -14,7 +14,6 @@ _data = [ Vector2( 0.370558, 1 ), 0.0, -0.0852815, 0, 0, Vector2( 1, 0 ), -0.038
 [node name="Puck" type="KinematicBody2D"]
 position = Vector2( 512, 296 )
 script = ExtResource( 2 )
-speed = 400.0
 
 [node name="PuckCollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
