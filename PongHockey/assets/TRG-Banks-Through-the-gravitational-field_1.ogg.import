@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TRG-Banks-Through-the-gravitational-field_1.ogg-55278c2723afbe9fcdec83c4f075bec0.oggstr"
+
+[deps]
+
+source_file="res://PongHockey/assets/TRG-Banks-Through-the-gravitational-field_1.ogg"
+dest_files=[ "res://.import/TRG-Banks-Through-the-gravitational-field_1.ogg-55278c2723afbe9fcdec83c4f075bec0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TRG-Banks-Non-stop-to-Insideoutworld.ogg-f4eb2c7dd52bd1259e37f6705cae681e.oggstr"
+
+[deps]
+
+source_file="res://PongHockey/assets/TRG-Banks-Non-stop-to-Insideoutworld.ogg"
+dest_files=[ "res://.import/TRG-Banks-Non-stop-to-Insideoutworld.ogg-f4eb2c7dd52bd1259e37f6705cae681e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

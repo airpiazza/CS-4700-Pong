@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PongHockey/assets/TRG-Banks-Through-the-gravitational-field_1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://PongHockey/assets/TRG-Banks-Interstellar-breakfast.ogg" type="AudioStream" id=2]
+[ext_resource path="res://PongHockey/assets/TRG-Banks-Non-stop-to-Insideoutworld.ogg" type="AudioStream" id=3]
+[ext_resource path="res://PongHockey/src/scripts/Jukebox.gd" type="Script" id=4]
+
+[node name="Jukebox" type="Node2D"]
+position = Vector2( 477, -153 )
+script = ExtResource( 4 )
+
+[node name="Song1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+bus = "New Bus"
+
+[node name="Song2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "New Bus"
+
+[node name="Song3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+bus = "New Bus"
+
+[connection signal="finished" from="Song1" to="." method="_on_Song1_finished"]
+[connection signal="finished" from="Song2" to="." method="_on_Song2_finished"]
+[connection signal="finished" from="Song3" to="." method="_on_Song3_finished"]
