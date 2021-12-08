@@ -14,12 +14,16 @@ export var wait_factor = 6
 export var max_speed = 2000.0
 export var min_speed = 300.0
 var last_collider = null
+const AI_DIRECTION = -1
+const PLAYER_DIRECTION = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	random_number_generator.randomize()
+	toggle_puck_visibility(self)
 	yield(get_tree().create_timer(1.5), "timeout")
-	spawn_puck()
+	toggle_puck_visibility(self)
+	spawn_puck(AI_DIRECTION)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -37,7 +41,7 @@ func _physics_process(delta):
 		$hit_sound.play()
 		last_collider = collision.get_collider().get_child(1)
 		if collision.get_collider().name != "TileMap":
-			collision.get_collider().get_child(1).disabled = true
+			last_collider.disabled = true
 		last_collision_time = 0
 		
 	if player_scored():
@@ -47,8 +51,10 @@ func _physics_process(delta):
 		increase_player_score()
 		reposition_puck()
 		stop_puck()
+		toggle_puck_visibility(self)
 		yield(get_tree().create_timer(2.0), "timeout")
-		spawn_puck()
+		toggle_puck_visibility(self)
+		spawn_puck(AI_DIRECTION)
 		clear_particles()
 			
 	if ai_scored():
@@ -58,8 +64,10 @@ func _physics_process(delta):
 		increase_ai_score()
 		reposition_puck()
 		stop_puck()
+		toggle_puck_visibility(self)
 		yield(get_tree().create_timer(2.0), "timeout")
-		spawn_puck()
+		toggle_puck_visibility(self)
+		spawn_puck(PLAYER_DIRECTION)
 		clear_particles()
 	
 	last_collision_time += delta
@@ -74,13 +82,13 @@ func _physics_process(delta):
 #	print(velocity.x)
 	
 
-func spawn_puck():
-	var x_random_direction = signs[random_number_generator.randi() % signs.size()]
-	var y_random_direction = signs[random_number_generator.randi() % signs.size()]
-	velocity = Vector2(x_random_direction, y_random_direction)*speed
+func spawn_puck(direction):
+	var y_random_direction = signs[random_number_generator.randi() % signs.size()]*speed
+	velocity = Vector2(direction,y_random_direction)
 
 func reposition_puck():
 	self.position.x = 512
+#	self.position.x = 700
 	self.position.y = 300
 #	self.position.y = random_number_generator.randi_range(0, 600)
 
@@ -98,7 +106,9 @@ func player_scored():
 
 func stop_puck():
 	velocity = Vector2.ZERO
-
+	
+func toggle_puck_visibility(puck):
+	puck.visible = !puck.visible
 #
 func degrade_velocity():
 	velocity = velocity.linear_interpolate(Vector2.ZERO,.0005)
