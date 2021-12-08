@@ -67,3 +67,19 @@ margin_right = 150.0
 margin_bottom = 40.0
 text = "Play Pong Hockey"
 target_scene = "res://PongHockey/src/scenes/HockeyArena.tscn"
+
+[node name="InstructionButtons" type="VBoxContainer" parent="."]
+margin_left = 440.0
+margin_top = 400.0
+margin_right = 590.0
+margin_bottom = 440.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionButton" parent="InstructionButtons" instance=ExtResource( 2 )]
+margin_right = 150.0
+margin_bottom = 40.0
+text = "Instructions"
+target_scene = "res://MenuScreen/src/scenes/Instructions.tscn"

@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://MenuScreen/assets/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://MenuScreen/src/scenes/GameTitle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MenuScreen/src/scenes/PongTitle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MenuScreen/assets/inter_menu_theme.tres" type="Theme" id=4]
+[ext_resource path="res://pong/assets/retro_theme.tres" type="Theme" id=5]
+[ext_resource path="res://MenuScreen/src/scenes/NextSceneButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MenuScreen/assets/instructions_theme.tres" type="Theme" id=7]
+
+[node name="Instructions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = 112.0
+margin_right = 912.0
+margin_bottom = 600.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pong" parent="." instance=ExtResource( 3 )]
+margin_left = 216.0
+margin_top = 111.0
+margin_right = 440.0
+margin_bottom = 199.0
+theme = ExtResource( 5 )
+
+[node name="PongHockey" parent="." instance=ExtResource( 2 )]
+margin_left = 560.0
+margin_top = 95.0
+margin_right = 860.0
+margin_bottom = 195.0
+
+[node name="Up" type="Label" parent="."]
+margin_left = 255.0
+margin_top = 207.0
+margin_right = 432.0
+margin_bottom = 259.0
+theme = ExtResource( 7 )
+text = "UP: w, ↑"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Label" parent="."]
+margin_left = 203.0
+margin_top = 250.0
+margin_right = 451.0
+margin_bottom = 302.0
+theme = ExtResource( 7 )
+text = "DOWN: s, ↓"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MalletControl" type="Label" parent="."]
+margin_left = 552.0
+margin_top = 207.0
+margin_right = 879.0
+margin_bottom = 308.0
+theme = ExtResource( 7 )
+text = "move the mallet
+with your cursor"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="VBoxContainer" parent="."]
+margin_left = 440.0
+margin_top = 479.0
+margin_right = 590.0
+margin_bottom = 519.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" parent="Back" instance=ExtResource( 6 )]
+margin_right = 150.0
+margin_bottom = 40.0
+text = "Back"
+target_scene = "res://MenuScreen/src/scenes/Menu.tscn"
+
+[node name="PaddleInfo" type="Label" parent="."]
+margin_left = 168.0
+margin_top = 342.0
+margin_right = 850.0
+margin_bottom = 391.0
+theme = ExtResource( 7 )
+text = "you control the paddle on the right"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreInfo" type="Label" parent="."]
+margin_left = 368.0
+margin_top = 391.0
+margin_right = 653.0
+margin_bottom = 440.0
+theme = ExtResource( 7 )
+text = "first to 11 wins"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
